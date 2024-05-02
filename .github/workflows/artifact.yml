@@ -18,3 +18,15 @@ jobs:
       with:
         name: hello-artifact
         path: hello.txt
+  
+  download:
+    runs-on: ubunut-latest
+    steps:
+    - name: Download Dragon text file
+      uses: actions/download-artifact@v4
+      with:
+         name: hello-artifact
+         path: ./articfacts
+
+    - name: Read File
+      run: cat ./artifacts/hello.txt
