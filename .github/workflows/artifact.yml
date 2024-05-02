@@ -8,21 +8,22 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Create a text file
       run: echo "Hello, world!" > hello.txt
 
     - name: Archive text file
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: hello-artifact
         path: hello.txt
   
   download:
+    needs: build
     runs-on: ubunut-latest
     steps:
-    - name: Download Dragon text file
+    - name: Download Hello text file
       uses: actions/download-artifact@v4
       with:
          name: hello-artifact
